@@ -7,7 +7,13 @@ export default function Slide({
 	param,
 }: {
 	data: string[];
-	param: { width?: string; height?: string };
+	param: {
+		backgroundWidth?: string;
+		width?: string;
+		height?: string;
+		backgroundHeight?: string;
+		backgroundColor?: string;
+	};
 }) {
 	const [slideData, setSlideData] = useState(data);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,8 +41,8 @@ export default function Slide({
 	return (
 		<div
 			style={{
-				width: param?.width ? param?.width : "500px",
-				height: param?.height ? param?.height : "500px",
+				width: param?.backgroundWidth ? param?.backgroundWidth : "500px",
+				height: param?.backgroundHeight ? param?.backgroundHeight : "500px",
 			}}
 			className="flex items-center justify-center"
 		>
@@ -47,6 +53,11 @@ export default function Slide({
 					backgroundSize: "contain",
 					backgroundPosition: "center",
 					backgroundRepeat: "no-repeat",
+					width: param?.width ? param?.width : "300px",
+					height: param?.height ? param?.height : "300px",
+					backgroundColor: param?.backgroundColor
+						? param?.backgroundColor
+						: "transparent",
 				}}
 			>
 				<span className="absolute top-[-9px] text-center right-[6.41px] rounded-[2em] py-[1px] px-[8px] bg-[#333333] opacity-50 text-[12px] font-normal leading-[#17px] text-[#ffffff]">{`${
@@ -69,6 +80,10 @@ export default function Slide({
 					alt="phoneImage"
 					src={data[currentIndex]}
 					className="invisible"
+					style={{
+						width: param?.width ? param?.width : "300px",
+						height: param?.height ? param?.height : "300px",
+					}}
 				></img>
 				<div className="flex justify-center">
 					{slideData?.map((_, index) => {
