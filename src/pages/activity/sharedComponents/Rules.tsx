@@ -1,6 +1,6 @@
 const Rules = () => {
   return (
-    <div className="bg-light p-5 text-[#666666] leading-7 text-[10px] md:text-[14px]">
+    <div className="bg-light p-5 text-[#666666] leading-6 text-[10px] md:text-[14px]">
       <h5 className="font-medium">預約活動說明：</h5>
       <ul className="pl-2">
         <li>
