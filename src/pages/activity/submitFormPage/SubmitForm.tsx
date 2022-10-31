@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 export default function SubmitForm({
 	id,
@@ -7,19 +7,19 @@ export default function SubmitForm({
 	id: string;
 	submitFunction: Function;
 }) {
-	const {
-		handleSubmit,
-		register,
-		formState: { errors },
-	} = useForm<Inputs>();
-	const onSubmit = (values: any) => submitFunction(values);
-
 	type Inputs = {
 		fullName: string;
 		phoneNumber: string;
 		email: string;
 		privacyAccept: boolean;
 	};
+
+	const {
+		handleSubmit,
+		register,
+		formState: { errors },
+	} = useForm<Inputs>();
+	const onSubmit: SubmitHandler<Inputs> = (values) => submitFunction(values);
 
 	return (
 		<>
