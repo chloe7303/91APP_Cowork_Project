@@ -47,6 +47,7 @@ const LandingPage = () => {
         <Button
           text={"搶先登記"}
           handleClick={() => navigate("/activity/submit")}
+          param={{}}
         />
       </div>
     </main>

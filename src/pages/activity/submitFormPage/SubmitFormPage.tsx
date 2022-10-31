@@ -1,15 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../sharedComponents/Button";
+import SubmitForm from "./SubmitForm";
+import { useDispatch } from "react-redux";
+import { activityInfoActions } from "../../../redux/reducers/activityInfoReducer";
+import { userInfoType } from "../../../redux/reducers/activityInfoReducer";
 
 const SubmitFormPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (values: userInfoType) => {
+    console.log("form value", values);
+    dispatch(activityInfoActions.setUser({ userInfo: values }));
+    localStorage.setItem("userInfo", JSON.stringify(values));
     navigate("/activity/product");
   };
 
   return (
-    <main className="bg-default pb-[65px] md:pb-[150px] pt-[30px] md:pt-[60px]">
+    <main className="bg-default md:pb-[200px] pt-[30px] md:pt-[60px]">
       <div className="hidden md:block text-center mb-[60px]">
         <h1 className="text-[64px] mb-[66px]">iPhone新機搶先登記</h1>
         <p className="text-[24px] mb-2">
@@ -31,11 +39,15 @@ const SubmitFormPage = () => {
         </p>
         <p className="text-[14px] text-[#428BCA]">加碼贈品與活動說明 &#62;</p>
       </div>
-      <div className="max-w-[1080px] bg-light mx-auto py-[60px] text-center md:shadow-md">
-        this is form
+      <div className="max-w-[1080px] bg-light mx-auto py-5 md:py-[60px] md:shadow-md">
+        <SubmitForm id="userInfoForm" submitFunction={handleSubmitForm} />
       </div>
       <div className="p-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-        <Button text={"選擇商品"} handleClick={handleSubmitForm} />
+        <Button
+          text={"選擇商品"}
+          handleClick={() => {}}
+          param={{ formName: "userInfoForm" }}
+        />
       </div>
     </main>
   );
