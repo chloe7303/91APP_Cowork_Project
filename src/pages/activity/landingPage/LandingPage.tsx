@@ -1,14 +1,26 @@
-import Process from './Process';
-import Rules from '../sharedComponents/Rules';
-import Button from '../sharedComponents/Button';
+import Process from "./Process";
+import Rules from "../sharedComponents/Rules";
+import Button from "../sharedComponents/Button";
+import Slide from "./Slide";
+import { productsData } from "../../../datas/activity/data";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
     <main className="bg-default pb-[65px] md:pb-[150px]">
       <div className="px-3 md:px-0 md:max-w-[1080px] mx-auto">
-        <div className="py-7 md:py-[145px] flex justify-between flex-col-reverse md:flex-row">
-          <div className="w-[350px] h-[350px] bg-black">
-            {/* slides component */}
+        <div className="py-7 md:pt-[145px] md:pb-[125px] flex justify-between flex-col-reverse md:flex-row">
+          <div className="w-full md:w-[400px]">
+            <Slide
+              data={productsData.products.iphone13.mainImgs}
+              param={{
+                backgroundWidth: "400px",
+                backgroundHeight: "400px",
+                width: "350px",
+                height: "350px",
+              }}
+            />
           </div>
           <div className="md:w-[52%]">
             <div className="text-center md:text-left mb-5">
@@ -31,9 +43,11 @@ const LandingPage = () => {
         </div>
         <Rules />
       </div>
-      {/* fixed button */}
       <div className="p-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-        <Button text={'搶先登記'} />
+        <Button
+          text={"搶先登記"}
+          handleClick={() => navigate("/activity/submit")}
+        />
       </div>
     </main>
   );
