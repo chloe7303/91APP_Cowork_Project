@@ -1,41 +1,53 @@
+import Process from "./Process";
+import Rules from "../sharedComponents/Rules";
+import Button from "../sharedComponents/Button";
+import Slide from "./Slide";
+import { productsData } from "../../../datas/activity/data";
+import { useNavigate } from "react-router-dom";
+
 const LandingPage = () => {
+  const navigate = useNavigate();
   return (
-    <main>
-      <h1 className="text-[24px]">iPhone新機搶先登記</h1>
-      <p>活動日期：即日起 - 9/23 (限量預約登記，額滿為止)</p>
-      <p>登記的手機號碼需與網購會員手機號碼相同，每會員帳號限預約一支</p>
-      {/* 預約活動說明 */}
-      <div>
-        <h5>預約活動說明：</h5>
-        <ul>
-          <li>1. 預約登記日期：即日起至 2021/9/23(四)23:59 為止。</li>
-          <li>
-            2.
-            預約活動方法及聲明：於指定活動網頁登記預約資料，後續透過簡訊及email依照登記順序通知購買。限量預約，預約登記額滿為止。
-          </li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <p>
-          預約活動說明： 預 預約購買辦法：預約人需於9/24
-          8:00依預約登記順序提供專屬購買。
-          預約登記僅擁有優先購買資格，不代表訂購完成，訂單成立且成功付款後，方為完成訂購程序。
-          個人資料保護法告知事項當您透過本活動網站輸入個人資料參與活動時表示已同意『蒐集個人資料告知事項與同意書』內容。
-          - 個人資料項目：姓名、手機號碼、電子信箱 -
-          個人資料利用之地區、對象及方式：．地區：台灣地區。
-          ．對象：參與活動之客戶
-          ．方式：書面、電子文件、電話、以自動化機器或其他非自動化 等方式利用。
-          台端依據個資法第三條規定得行使之權利及方式：1.資料使用期間，權利人得隨時向本公司請求查詢、閱覽、製給複製
-          副本；或補充/更正、請求停止蒐集、處理、利用或刪除其所提供
-          之個人資料內容一部或全部。2.台端得自由選擇是否提供相關個人資料，惟若拒絕提供相關個人資
-          料者，將無法參加本活動或視為放棄預約登記資格。經檢舉或本公
-          司發現不足以確認本活動參與者的身分真實性或其他個人資料冒
-          用、盜用、資料不實等情形，致本公司無法進行必要之確認作業，
-          本公司有暫停停止提供本活動相關服務並取消預約登記資格，如有
-          不便之處敬請見諒。
-        </p>
+    <main className="bg-default pb-[65px] md:pb-[150px]">
+      <div className="px-3 md:px-0 md:max-w-[1080px] mx-auto">
+        <div className="py-7 md:pt-[145px] md:pb-[125px] flex justify-between flex-col-reverse md:flex-row">
+          <div className="w-full md:w-[400px]">
+            <Slide
+              data={productsData.products.iphone13.mainImgs}
+              param={{
+                backgroundWidth: "400px",
+                backgroundHeight: "400px",
+                width: "350px",
+                height: "350px",
+              }}
+            />
+          </div>
+          <div className="md:w-[52%]">
+            <div className="text-center md:text-left mb-5">
+              <h1 className="text-[24px] md:text-[48px] font-medium mb-2 md:mb-6">
+                iPhone新機搶先登記
+              </h1>
+              <p className="text-[14px] md:text-[24px] md:mb-2">
+                活動日期：即日起 - 9/23 (限量預約登記，額滿為止)
+              </p>
+              <p className="text-[14px] md:text-[24px] text-primary">
+                <span>登記的手機號碼需與網購會員手機號碼相同，</span>
+                <span className="hidden md:inline">每會員帳號限預約一支</span>
+              </p>
+              <p className="text-[14px] md:hidden text-primary">
+                每會員帳號限預約一支
+              </p>
+            </div>
+            <Process />
+          </div>
+        </div>
+        <Rules />
+      </div>
+      <div className="p-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+        <Button
+          text={"搶先登記"}
+          handleClick={() => navigate("/activity/submit")}
+        />
       </div>
     </main>
   );

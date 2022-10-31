@@ -1,18 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import App from './App';
-import Activity from './Activity';
-import Products from './Products';
-import LandingPage from './pages/activity/landingPage/LandingPage';
-import ProductPage from './pages/activity/productPage/ProductPage';
-import SubmitFormPage from './pages/activity/submitFormPage/SubmitFormPage';
-import SuccessVerifiedPage from './pages/activity/successVerifiedPage/SuccessVerifiedPage';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Activity from "./Activity";
+import Products from "./Products";
+import LandingPage from "./pages/activity/landingPage/LandingPage";
+import ProductPage from "./pages/activity/productPage/ProductPage";
+import SubmitFormPage from "./pages/activity/submitFormPage/SubmitFormPage";
+import SuccessVerifiedPage from "./pages/activity/successVerifiedPage/SuccessVerifiedPage";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>

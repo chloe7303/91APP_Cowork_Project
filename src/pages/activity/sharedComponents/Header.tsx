@@ -1,9 +1,9 @@
-import logo from './logo.png';
+import logo from "./logo.png";
 
 const Header = () => {
   return (
-    <header className="bg-[#FF5353] py-5 ">
-      <div className="max-w-[1080px]">
+    <header className="bg-primary py-5">
+      <div className="max-w-[1080px] mx-auto pl-5 sm:pl-0">
         <img src={logo} alt="logo" />
       </div>
     </header>
