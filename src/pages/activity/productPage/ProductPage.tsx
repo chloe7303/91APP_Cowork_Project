@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../sharedComponents/Button";
 import Selector from "./Selector";
 import { productsData } from "../../../datas/activity/data";
+import ImageDisplay from "./ImageDisplay";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -20,8 +21,22 @@ const ProductPage = () => {
         選擇商品
       </h1>
       <div className="max-w-[1080px] bg-light rounded-md mx-auto md:py-[70px] md:pl-[80px] md:pr-[108px] md:shadow-md flex flex-col md:flex-row md:justify-between">
-        <div className="w-full md:w-[426px] h-[520px] bg-black">slide</div>
-        <div className="pb-[80px] p-4 md:w-[376px]">
+        <div className="w-full md:w-[426px] mr-[20px]">
+          <ImageDisplay
+            data={
+              productsData?.products[
+                selectedProduct.model as keyof typeof productsData.products
+              ].color
+            }
+            param={{
+              backgroundColor: "#F2F2F2",
+              backgroundWidth: 426,
+              backgroundHeight: 426,
+              displayColor: selectedProduct.color,
+            }}
+          />
+        </div>
+        <div className="pb-[80px] p-4 md:pb-0 md:w-[376px]">
           <h3 className="md:text-[20px] mb-5">Apple iphone 13</h3>
           <h2 className="text-[20px] md:text-[25px] text-primary">{`NT$${
             selectedProduct?.memory
@@ -48,6 +63,8 @@ const ProductPage = () => {
                   setSelectedProduct((prevValue) => ({
                     ...prevValue,
                     model: modelName,
+                    color: "",
+                    memory: "",
                   }))
                 }
               />
