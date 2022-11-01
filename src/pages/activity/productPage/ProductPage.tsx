@@ -14,6 +14,16 @@ const ProductPage = () => {
     memory: "",
     price: "",
   });
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmitProduct = () => {
+    if (selectedProduct.color && selectedProduct.memory) {
+      // dispatch
+      navigate("/activity/success");
+    } else {
+      setShowPopup(true);
+    }
+  };
 
   return (
     <main className="bg-default md:pb-[150px] md:pt-[50px]">
@@ -137,9 +147,26 @@ const ProductPage = () => {
               : 0
           }`}</p>
         </div>
+        <Button text={"送出"} handleClick={handleSubmitProduct} param={{}} />
+      </div>
+      {/* popup */}
+      <div
+        className={`${
+          !showPopup && "hidden"
+        } fixed bg-black w-full top-0 bottom-0 opacity-50`}
+      ></div>
+      <div
+        className={`${
+          !showPopup && "hidden"
+        } absolute p-4 rounded-md bg-light top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] opacity-100 text-center`}
+      >
+        <h3 className="md:text-[20px] font-medium mb-5">請選擇商品選項</h3>
+        <h4 className="mb-4 whitespace-nowrap">
+          送出資料錯誤，未選擇商品款式規格
+        </h4>
         <Button
-          text={"送出"}
-          handleClick={() => navigate("/activity/success")}
+          text="確認"
+          handleClick={() => setShowPopup(false)}
           param={{}}
         />
       </div>
