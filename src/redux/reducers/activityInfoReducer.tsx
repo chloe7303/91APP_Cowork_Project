@@ -12,8 +12,9 @@ export type userInfoType = {
   areaCode?: string;
 };
 type phoneInfoType = {
-  itemName?: string;
-  itemType?: string;
+  model?: string;
+  type?: string;
+  memory?: string;
   quantity?: number;
   price?: number;
 };

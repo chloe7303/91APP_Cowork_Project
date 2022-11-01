@@ -13,7 +13,7 @@ const LandingPage = () => {
         <div className="py-7 md:pt-[145px] md:pb-[125px] flex justify-between flex-col-reverse md:flex-row">
           <div className="w-full md:w-[400px]">
             <Slide
-              data={productsData.products.iphone13.mainImgs}
+              data={productsData.mainImgs}
               param={{
                 backgroundWidth: "400px",
                 backgroundHeight: "400px",
