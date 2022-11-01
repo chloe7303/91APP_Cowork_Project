@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { activityInfoActions } from "../../../redux/reducers/activityInfoReducer";
 import Button from "../sharedComponents/Button";
 import Selector from "./Selector";
 import { productsData } from "../../../datas/activity/data";
@@ -7,23 +9,16 @@ import ImageDisplay from "./ImageDisplay";
 
 const ProductPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [selectedProduct, setSelectedProduct] = useState({
     type: "iphone 13",
     model: "iphone 13 mini",
     color: "",
     memory: "",
-    price: "",
+    price: 0,
   });
   const [showPopup, setShowPopup] = useState(false);
-
-  const handleSubmitProduct = () => {
-    if (selectedProduct.color && selectedProduct.memory) {
-      // dispatch
-      navigate("/activity/success");
-    } else {
-      setShowPopup(true);
-    }
-  };
 
   return (
     <main className="bg-default md:pb-[150px] md:pt-[50px]">
@@ -48,15 +43,7 @@ const ProductPage = () => {
         </div>
         <div className="pb-[80px] p-4 md:pb-0 md:w-[376px]">
           <h3 className="md:text-[20px] mb-5">Apple iphone 13</h3>
-          <h2 className="text-[20px] md:text-[25px] text-primary">{`NT$${
-            selectedProduct?.memory
-              ? productsData?.products[
-                  selectedProduct.model as keyof typeof productsData.products
-                ].memory.filter(
-                  (memory) => memory.size === selectedProduct.memory
-                )[0].cost
-              : 0
-          }`}</h2>
+          <h2 className="text-[20px] md:text-[25px] text-primary">{`NT$${selectedProduct.price}`}</h2>
           <p className="text-primary text-[14px] md:text-[15px] mb-3 md:mb-5">
             登記的手機號碼需與會員手機號碼相同，每人限購一支一經送出商品選項，不得修改
           </p>
@@ -75,6 +62,7 @@ const ProductPage = () => {
                     model: modelName,
                     color: "",
                     memory: "",
+                    price: 0,
                   }))
                 }
               />
@@ -126,6 +114,7 @@ const ProductPage = () => {
                     setSelectedProduct((prevValue) => ({
                       ...prevValue,
                       memory: memory.size,
+                      price: memory.cost,
                     }))
                   }
                 />
@@ -137,17 +126,44 @@ const ProductPage = () => {
       <div className="p-4 py-2 md:py-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
         <div className="text-primary flex justify-between max-w-[1080px] mx-auto mb-2 text-[14px] md:text-[20px]">
           <p>一經送出商品選項，不得修改</p>
-          <p>{`NT$${
-            selectedProduct?.memory
-              ? productsData?.products[
-                  selectedProduct.model as keyof typeof productsData.products
-                ].memory.filter(
-                  (memory) => memory.size === selectedProduct.memory
-                )[0].cost
-              : 0
-          }`}</p>
+          <p>{`NT$${selectedProduct.price}`}</p>
         </div>
-        <Button text={"送出"} handleClick={handleSubmitProduct} param={{}} />
+        <Button
+          text={"送出"}
+          handleClick={() => {
+            if (
+              selectedProduct.model &&
+              selectedProduct.memory &&
+              selectedProduct.color
+            ) {
+              dispatch(
+                activityInfoActions.setUser({
+                  phoneInfo: {
+                    model: selectedProduct.model,
+                    type: selectedProduct.type,
+                    memory: selectedProduct.memory,
+                    quantity: 1,
+                    price: selectedProduct.price,
+                  },
+                })
+              );
+              localStorage.setItem(
+                "phoneInfo",
+                JSON.stringify({
+                  model: selectedProduct.model,
+                  type: selectedProduct.type,
+                  memory: selectedProduct.memory,
+                  quantity: 1,
+                  price: selectedProduct.price,
+                })
+              );
+              navigate("/activity/success");
+            } else {
+              setShowPopup(true);
+            }
+          }}
+          param={{}}
+        />
       </div>
       {/* popup */}
       <div
