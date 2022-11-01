@@ -11,6 +11,19 @@ import phoneAll1 from "../../assets/activity/phone_all_1.png";
 import phoneAll2 from "../../assets/activity/phone_all_2.png";
 
 export const productsData = {
+  mainImgs: [
+    phoneAll2,
+    phoneAll1,
+    phoneRed,
+    phonePink,
+    phoneDarkBlue,
+    phoneBlack,
+    phoneWhite,
+    phoneSilver,
+    phoneLightBlue,
+    phoneGold,
+    phoneGray,
+  ],
   allModels: [
     "iphone 13 mini",
     "iphone 13",
@@ -20,15 +33,6 @@ export const productsData = {
   products: {
     "iphone 13": {
       type: "iphone 13",
-      mainImgs: [
-        phoneAll2,
-        phoneAll1,
-        phoneRed,
-        phonePink,
-        phoneDarkBlue,
-        phoneBlack,
-        phoneWhite,
-      ],
       color: [
         { name: "紅色", hexCode: "C72232", img: phoneRed },
         { name: "粉紅色", hexCode: "FAE1DC", img: phonePink },
@@ -61,15 +65,6 @@ export const productsData = {
     },
     "iphone 13 mini": {
       type: "iphone 13",
-      mainImgs: [
-        phoneAll2,
-        phoneAll1,
-        phoneRed,
-        phonePink,
-        phoneDarkBlue,
-        phoneBlack,
-        phoneWhite,
-      ],
       color: [
         { name: "紅色", hexCode: "C72232", img: phoneRed },
         { name: "粉紅色", hexCode: "FAE1DC", img: phonePink },
@@ -102,14 +97,6 @@ export const productsData = {
     },
     "iphone 13 Pro": {
       type: "iphone 13",
-      mainImgs: [
-        phoneAll2,
-        phoneAll1,
-        phoneLightBlue,
-        phoneSilver,
-        phoneGold,
-        phoneGray,
-      ],
       color: [
         { name: "天峰藍色", hexCode: "A9C1D9", img: phoneLightBlue },
         { name: "銀色", hexCode: "F1F2ED", img: phoneSilver },
@@ -143,14 +130,6 @@ export const productsData = {
     },
     "iphone 13 Pro Max": {
       type: "iphone 13",
-      mainImgs: [
-        phoneAll2,
-        phoneAll1,
-        phoneLightBlue,
-        phoneSilver,
-        phoneGold,
-        phoneGray,
-      ],
       color: [
         { name: "天峰藍色", hexCode: "A9C1D9", img: phoneLightBlue },
         { name: "銀色", hexCode: "F1F2ED", img: phoneSilver },
