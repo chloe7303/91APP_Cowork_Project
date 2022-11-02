@@ -7,7 +7,7 @@ import arrorIcon from "./images/arrow.png";
 const Process = () => {
 	const processSteps = [
 		"1. 填寫登記資料",
-		"2. 等待審核驗證",
+		"2. 等待審核驗證d",
 		"3. 確認驗證通過",
 		"4. 開賣日購買\xa0\xa0",
 	];
