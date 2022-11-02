@@ -142,7 +142,11 @@ export default function SubmitForm({
           </span>
 
           <input
-            className="mt-[7px] py-[8.5px] px-[10px] rounded-[5px] border border-solid border-[#DDDDDD] placeholder-[#999999] text-[14px] w-[100%]"
+            className={`mt-[7px] py-[8.5px] px-[10px] rounded-[5px] border border-solid placeholder-[#999999] text-[14px] w-[100%] ${
+              errors.email
+                ? "border-primary focus:outline-primary"
+                : "border-[#dddddd] focus:outline-[rgb(26,115,232)]"
+            }`}
             placeholder="輸入 Email"
             {...register("email", {
               required: "Email 格式錯誤，請重新輸入",
