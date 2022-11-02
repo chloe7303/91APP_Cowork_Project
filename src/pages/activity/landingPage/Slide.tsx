@@ -18,6 +18,40 @@ export default function Slide({
   const [slideData, setSlideData] = useState(data);
   const [currentIndex, setCurrentIndex] = useState(0);
   const interval = useRef<ReturnType<typeof setInterval>>();
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  // the required distance between touchStart and touchEnd to be detected as a swipe
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(0); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
+    setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      if (currentIndex === slideData.length) {
+        return;
+      } else {
+        setCurrentIndex((prev) => prev + 1);
+      }
+    }
+    if (isRightSwipe) {
+      if (currentIndex === 0) {
+        return;
+      } else {
+        setCurrentIndex((prev) => prev - 1);
+      }
+    }
+  };
 
   useEffect(() => {
     interval.current = setInterval(() => {
@@ -59,6 +93,9 @@ export default function Slide({
             ? param?.backgroundColor
             : "transparent",
         }}
+        onTouchStart={(e) => onTouchStart(e)}
+        onTouchMove={(e) => onTouchMove(e)}
+        onTouchEnd={onTouchEnd}
       >
         <span className="absolute top-[-9px] text-center right-[6.41px] rounded-[2em] py-[1px] px-[8px] bg-[#333333] opacity-50 text-[12px] font-normal leading-[#17px] text-[#ffffff]">{`${
           currentIndex + 1
