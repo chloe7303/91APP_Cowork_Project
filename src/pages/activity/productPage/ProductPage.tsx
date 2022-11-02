@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 import { activityInfoActions } from "../../../redux/reducers/activityInfoReducer";
 import Button from "../sharedComponents/Button";
 import Selector from "./Selector";
@@ -11,6 +12,9 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const userInfo = useSelector(
+    (state: RootState) => state.activityInfo.userInfo
+  );
   const [selectedProduct, setSelectedProduct] = useState({
     type: "iphone 13",
     model: "iphone 13 mini",
@@ -21,7 +25,16 @@ const ProductPage = () => {
   });
   const [showPopup, setShowPopup] = useState(false);
 
-  return (
+  const formatNumberWithCommas = (price: number) => {
+    let updatedPrice = price.toLocaleString("en-US");
+    return `NT$${updatedPrice}`;
+  };
+
+  useEffect(() => {
+    if (!userInfo?.accepted) navigate("/activity/submit");
+  }, []);
+
+  return userInfo?.accepted ? (
     <main className="bg-default md:pb-[150px] md:pt-[50px]">
       <h1 className="hidden md:block text-center text-[64px] mb-[40px]">
         選擇商品
@@ -44,7 +57,9 @@ const ProductPage = () => {
         </div>
         <div className="pb-[80px] p-4 md:pb-0 md:w-[376px]">
           <h3 className="md:text-[20px] mb-5">Apple iphone 13</h3>
-          <h2 className="text-[20px] md:text-[25px] text-primary">{`NT$${selectedProduct.price}`}</h2>
+          <h2 className="text-[20px] md:text-[25px] text-primary">
+            {formatNumberWithCommas(selectedProduct.price)}
+          </h2>
           <p className="text-primary text-[14px] md:text-[15px] mb-3 md:mb-5">
             登記的手機號碼需與會員手機號碼相同，每人限購一支一經送出商品選項，不得修改
           </p>
@@ -129,7 +144,7 @@ const ProductPage = () => {
       <div className="p-4 py-2 md:py-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
         <div className="text-primary flex justify-between max-w-[1080px] mx-auto mb-2 text-[14px] md:text-[20px]">
           <p>一經送出商品選項，不得修改</p>
-          <p>{`NT$${selectedProduct.price}`}</p>
+          <p>{formatNumberWithCommas(selectedProduct.price)}</p>
         </div>
         <Button
           text={"送出"}
@@ -151,17 +166,7 @@ const ProductPage = () => {
                   },
                 })
               );
-              localStorage.setItem(
-                "phoneInfo",
-                JSON.stringify({
-                  model: selectedProduct.model,
-                  type: selectedProduct.type,
-                  memory: selectedProduct.memory,
-                  quantity: 1,
-                  color: selectedProduct.colorName,
-                  price: selectedProduct.price,
-                })
-              );
+              sessionStorage.removeItem("userInfo");
               navigate("/activity/success");
             } else {
               setShowPopup(true);
@@ -192,6 +197,8 @@ const ProductPage = () => {
         />
       </div>
     </main>
+  ) : (
+    <></>
   );
 };
 

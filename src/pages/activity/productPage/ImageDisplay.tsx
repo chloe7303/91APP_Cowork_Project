@@ -80,7 +80,7 @@ export default function ImageDisplay({
         {data
           ?.filter((element) => element.hexCode === currentColor)
           .map((element) => {
-            return <img alt="phone" src={element.img} />;
+            return <img key={element.name} alt="phone" src={element.img} />;
           })}
       </div>
       <div
@@ -120,6 +120,7 @@ export default function ImageDisplay({
             ?.map((element, index) => {
               return (
                 <img
+                  key={element.name}
                   alt="phone"
                   src={element.img}
                   style={{

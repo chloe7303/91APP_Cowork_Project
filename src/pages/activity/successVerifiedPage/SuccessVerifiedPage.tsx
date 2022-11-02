@@ -3,11 +3,25 @@ import heartImg from "./heart.png";
 import Button from "../sharedComponents/Button";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SuccessVerifiedPage = () => {
-  const info = useSelector((state: RootState) => state.activityInfo);
+  const navigate = useNavigate();
 
-  return (
+  const info = useSelector((state: RootState) => state.activityInfo);
+  useEffect(() => {
+    if (!info?.userInfo?.accepted) {
+      navigate("/activity/submit");
+      return;
+    }
+    if (!info?.phoneInfo) {
+      navigate("/activity/product");
+      return;
+    }
+  }, []);
+
+  return info?.userInfo?.accepted && info?.phoneInfo ? (
     <main className="bg-default">
       <div className="text-center pt-[30px] p-5 md:pt-[60px] bg-light border-b border-solid border-[#DDDDDD]">
         <h1 className="text-[24px] md:text-[64px] font-medium">
@@ -87,6 +101,8 @@ const SuccessVerifiedPage = () => {
         />
       </div>
     </main>
+  ) : (
+    <></>
   );
 };
 

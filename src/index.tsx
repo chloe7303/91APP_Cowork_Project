@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Activity from "./Activity";
 import Products from "./Products";
+import Error from "./pages/errorPage/Error";
 import LandingPage from "./pages/activity/landingPage/LandingPage";
 import ProductPage from "./pages/activity/productPage/ProductPage";
 import SubmitFormPage from "./pages/activity/submitFormPage/SubmitFormPage";
@@ -34,6 +35,7 @@ root.render(
             <Route path="success" element={<SuccessVerifiedPage />}></Route>
           </Route>
           <Route path="/products" element={<Products />}></Route>
+          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
     </BrowserRouter>

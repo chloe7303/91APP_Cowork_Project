@@ -10,6 +10,7 @@ export type userInfoType = {
   email?: string;
   privacyAccept?: boolean;
   areaCode?: string;
+  accepted?: boolean;
 };
 type phoneInfoType = {
   model?: string;
@@ -21,9 +22,9 @@ type phoneInfoType = {
 };
 const initialState: initialStateType = {
   userInfo:
-    JSON.parse(window.localStorage.getItem("userInfo") as string) ?? null,
+    JSON.parse(window.sessionStorage.getItem("userInfo") as string) ?? null,
   phoneInfo:
-    JSON.parse(window.localStorage.getItem("phoneInfo") as string) ?? null,
+    JSON.parse(window.sessionStorage.getItem("phoneInfo") as string) ?? null,
 };
 
 const activityInfoSlice = createSlice({

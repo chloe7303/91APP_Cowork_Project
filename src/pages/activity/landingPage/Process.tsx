@@ -9,7 +9,7 @@ const Process = () => {
     "1. 填寫登記資料",
     "2. 等待審核驗證",
     "3. 確認驗證通過",
-    "4. 開賣日購買購",
+    "4. 開賣日購買\xa0\xa0",
   ];
 
   return (
@@ -39,8 +39,13 @@ const Process = () => {
         </div>
       </div>
       <div className="flex justify-between text-center md:text-[14px]">
-        {processSteps.map((step) => (
-          <div className="scale-[0.8] origin-top-left whitespace-nowrap md:scale-100 ">
+        {processSteps.map((step, index) => (
+          <div
+            key={step}
+            className={`scale-[0.8] whitespace-nowrap md:scale-100 ${
+              index === 2 && "text-[#FF650F]"
+            }`}
+          >
             {step}
           </div>
         ))}
