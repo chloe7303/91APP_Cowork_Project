@@ -16,6 +16,7 @@ type phoneInfoType = {
   type?: string;
   memory?: string;
   quantity?: number;
+  color?: string;
   price?: number;
 };
 const initialState: initialStateType = {

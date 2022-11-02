@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { activityInfoReducer } from "./reducers/activityInfoReducer";
 
 const store = configureStore({
-	reducer: {
-		activityInfo: activityInfoReducer,
-	},
+  reducer: {
+    activityInfo: activityInfoReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

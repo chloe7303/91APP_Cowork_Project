@@ -16,6 +16,7 @@ const ProductPage = () => {
     model: "iphone 13 mini",
     color: "",
     memory: "",
+    colorName: "",
     price: 0,
   });
   const [showPopup, setShowPopup] = useState(false);
@@ -62,6 +63,7 @@ const ProductPage = () => {
                     model: modelName,
                     color: "",
                     memory: "",
+                    colorName: "",
                     price: 0,
                   }))
                 }
@@ -88,6 +90,7 @@ const ProductPage = () => {
                     setSelectedProduct((prevValue) => ({
                       ...prevValue,
                       color: color.hexCode,
+                      colorName: color.name,
                     }))
                   }
                 />
@@ -137,12 +140,13 @@ const ProductPage = () => {
               selectedProduct.color
             ) {
               dispatch(
-                activityInfoActions.setUser({
+                activityInfoActions.setPhoneInfo({
                   phoneInfo: {
                     model: selectedProduct.model,
                     type: selectedProduct.type,
                     memory: selectedProduct.memory,
                     quantity: 1,
+                    color: selectedProduct.colorName,
                     price: selectedProduct.price,
                   },
                 })
@@ -154,6 +158,7 @@ const ProductPage = () => {
                   type: selectedProduct.type,
                   memory: selectedProduct.memory,
                   quantity: 1,
+                  color: selectedProduct.colorName,
                   price: selectedProduct.price,
                 })
               );

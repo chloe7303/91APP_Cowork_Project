@@ -10,7 +10,6 @@ const SubmitFormPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmitForm = (values: userInfoType) => {
-    console.log("form value", values);
     dispatch(activityInfoActions.setUser({ userInfo: values }));
     localStorage.setItem("userInfo", JSON.stringify(values));
     navigate("/activity/product");
