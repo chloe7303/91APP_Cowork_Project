@@ -13,31 +13,31 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(
-	document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/">
-					<Route
-						path="activity"
-						element={
-							<Provider store={store}>
-								<Activity />
-							</Provider>
-						}
-					>
-						<Route index element={<LandingPage />}></Route>
-						<Route path="product" element={<ProductPage />}></Route>
-						<Route path="submit" element={<SubmitFormPage />}></Route>
-						<Route path="success" element={<SuccessVerifiedPage />}></Route>
-					</Route>
-					<Route path="/products" element={<Products />}></Route>
-				</Route>
-			</Routes>
-		</BrowserRouter>
-	</React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route
+            path="activity"
+            element={
+              <Provider store={store}>
+                <Activity />
+              </Provider>
+            }
+          >
+            <Route index element={<LandingPage />}></Route>
+            <Route path="product" element={<ProductPage />}></Route>
+            <Route path="submit" element={<SubmitFormPage />}></Route>
+            <Route path="success" element={<SuccessVerifiedPage />}></Route>
+          </Route>
+          <Route path="/products" element={<Products />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
