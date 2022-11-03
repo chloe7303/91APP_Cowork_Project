@@ -26,11 +26,13 @@ const useVideoPlayer = (
   const handleOnTimeUpdate = () => {
     if (!videoElement.current) return;
     const progress =
-      videoElement.current.currentTime / videoElement.current.duration / 100;
+      (videoElement.current.currentTime / videoElement.current.duration) * 100;
     setPlayerState({
       ...playerState,
       progress,
     });
+    if (progress === 100)
+      setPlayerState({ ...playerState, isPlaying: false, progress: 0 });
   };
 
   const handleVideoProgress = (event: { target: { value: unknown } }) => {
