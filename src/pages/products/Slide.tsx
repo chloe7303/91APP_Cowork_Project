@@ -7,8 +7,14 @@ import arrowLeft from "./images/arrow_left.png";
 import arrowRight from "./images/arrow_right.png";
 
 import { useState } from "react";
+import VideoSlide from "./VideoSlide";
+import clothesVideo from "../../assets/products/clothes_video.mp4";
 
 const sliderDataArray = [
+  {
+    type: "video",
+    source: clothesVideo,
+  },
   {
     type: "image",
     source: mainImage1,
@@ -48,7 +54,8 @@ const Slide = () => {
               slideIndex === index ? "opacity-100" : "opacity-0"
             }`}
           >
-            <img src={obj.source} alt="clothes" />
+            {obj.type === "image" && <img src={obj.source} alt="clothes" />}
+            {obj.type === "video" && <VideoSlide src={obj.source} />}
           </div>
         );
       })}
@@ -70,7 +77,7 @@ const Slide = () => {
       </button>
 
       <div className="absolute bottom-0 flex left-[50%] -translate-x-[50%]">
-        {sliderDataArray.map((item, index) => (
+        {sliderDataArray.map((_, index) => (
           <div
             key={index}
             onClick={() => moveDot(index)}

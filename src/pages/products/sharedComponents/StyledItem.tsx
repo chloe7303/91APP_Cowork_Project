@@ -17,7 +17,9 @@ const StyledItem = ({
       </div>
       <div className="">
         <h5 className="text-[#999999]">niko and ...</h5>
-        <h4 className="mb-6">LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色</h4>
+        <h4 className="mb-6 text-[14px]">
+          LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色
+        </h4>
         <small className="text-[#999999] line-through">NT$5</small>
         <div className="flex justify-between">
           <h4 className="text-primary text-[18px]">NT$200</h4>
