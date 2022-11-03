@@ -5,12 +5,18 @@ import Badge from "./Badge";
 const StyledItem = ({
   imgSrc,
   badgeText,
+  noBorderBottom,
 }: {
   imgSrc: string;
   badgeText: string | null;
+  noBorderBottom: boolean;
 }) => {
   return (
-    <div className="flex justify-between p-5 pl-0 ml-5 border-b border-solid border-[#D8D9D8]">
+    <div
+      className={`flex justify-between p-5 pl-0 ml-5 border-solid border-[#D8D9D8] ${
+        !noBorderBottom && "border-b"
+      }`}
+    >
       <div className="relative w-[108px] h-[128px] mr-4">
         <img src={imgSrc} alt="skirt" />
         {badgeText && <Badge text={badgeText} />}
