@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 
 const useVideoPlayer = (
-  videoElement: React.MutableRefObject<HTMLVideoElement | null>
+  videoElement: React.MutableRefObject<HTMLVideoElement | null>,
+  handleVideoFinished: Function
 ) => {
   const [playerState, setPlayerState] = useState({
-    isPlaying: false,
+    isPlaying: true,
     progress: 0,
-    isMuted: false,
+    isMuted: true,
   });
 
   const togglePlay = () => {
@@ -31,8 +32,10 @@ const useVideoPlayer = (
       ...playerState,
       progress,
     });
-    if (progress === 100)
-      setPlayerState({ ...playerState, isPlaying: false, progress: 0 });
+    if (progress === 100) {
+      handleVideoFinished();
+      setPlayerState({ ...playerState, isPlaying: true, progress: 0 });
+    }
   };
 
   const handleVideoProgress = (event: { target: { value: unknown } }) => {
@@ -59,6 +62,7 @@ const useVideoPlayer = (
     toggleMuted,
     handleOnTimeUpdate,
     handleVideoProgress,
+    handleVideoFinished,
   };
 };
 

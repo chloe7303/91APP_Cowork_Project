@@ -6,7 +6,7 @@ import mainImage5 from "./images/clothes_5.png";
 import arrowLeft from "./images/arrow_left.png";
 import arrowRight from "./images/arrow_right.png";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import VideoSlide from "./VideoSlide";
 import clothesVideo from "../../assets/products/clothes_video.mp4";
 
@@ -39,26 +39,38 @@ const sliderDataArray = [
 
 const Slide = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-
+  const interval = useRef<ReturnType<typeof setInterval>>();
   const moveDot = (index: number) => {
     setSlideIndex(index);
   };
 
+  const handleVideoFinished = () => {
+    if (slideIndex === sliderDataArray?.length - 1) setSlideIndex(0);
+    else setSlideIndex((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (sliderDataArray[slideIndex].type === "video") return;
+    interval.current = setInterval(() => {
+      if (slideIndex === sliderDataArray?.length - 1) setSlideIndex(0);
+      else setSlideIndex((prev) => prev + 1);
+    }, 4000);
+
+    return () => clearInterval(interval.current);
+  });
+
   return (
     <div className="w-[528px] h-[730px] relative mr-[18px]">
-      {sliderDataArray.map((obj, index) => {
-        return (
-          <div
-            key={index}
-            className={`absolute ${
-              slideIndex === index ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {obj.type === "image" && <img src={obj.source} alt="clothes" />}
-            {obj.type === "video" && <VideoSlide src={obj.source} />}
-          </div>
-        );
-      })}
+      <div className="absolute">
+        {sliderDataArray?.[slideIndex].type === "image" ? (
+          <img src={sliderDataArray?.[slideIndex].source} alt="clothes" />
+        ) : (
+          <VideoSlide
+            src={sliderDataArray?.[slideIndex].source}
+            handleVideoFinished={handleVideoFinished}
+          />
+        )}
+      </div>
       <button
         onClick={() => setSlideIndex(slideIndex - 1)}
         className={`absolute top-[50%] left-[10px] ${

@@ -7,19 +7,28 @@ import {
   BsFillVolumeDownFill,
 } from "react-icons/bs";
 
-const VideoSlide = ({ src }: { src: string }) => {
+const VideoSlide = ({
+  src,
+  handleVideoFinished,
+}: {
+  src: string;
+  handleVideoFinished: Function;
+}) => {
   const videoElement = useRef(null);
+
   const {
     playerState,
     toggleMuted,
     togglePlay,
     handleOnTimeUpdate,
     handleVideoProgress,
-  } = useVideoPlayer(videoElement);
+  } = useVideoPlayer(videoElement, handleVideoFinished);
 
   return (
     <div className="relative">
       <video
+        autoPlay={true}
+        muted={true}
         width={"528px"}
         height={"703px"}
         src={src}
