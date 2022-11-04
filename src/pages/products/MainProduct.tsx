@@ -28,7 +28,7 @@ const MainProduct = () => {
   return (
     <div className="flex">
       <Slide />
-      <div>
+      <div className="w-[335px]">
         <div className="mb-8">
           <h1 className="text-[23px] font-medium">
             柏高島屋ステーションモール店
