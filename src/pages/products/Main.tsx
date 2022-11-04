@@ -1,3 +1,5 @@
+import MainProduct from "./MainProduct";
+
 export default function Main({
   personData,
   hintData,
@@ -8,7 +10,7 @@ export default function Main({
   return (
     <div>
       <div className="flex flex-col">
-        <div></div>
+        <MainProduct />
         <div className="mb-[60px]">
           <span>此店員其他穿搭</span>
           <div className="flex max-w-[872px] justify-between mt-[14px]">
