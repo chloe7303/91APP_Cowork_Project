@@ -5,5 +5,7 @@
 @layer base {
   html {
     font-family: Noto Sans TC, system-ui, sans-serif;
+    height: 100%;
+    position: relative;
   }
 }
