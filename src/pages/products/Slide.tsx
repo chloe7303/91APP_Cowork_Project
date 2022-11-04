@@ -1,8 +1,8 @@
-import mainImage1 from "./images/clothes_1.png";
-import mainImage2 from "./images/clothes_2.png";
-import mainImage3 from "./images/clothes_3.png";
-import mainImage4 from "./images/clothes_4.png";
-import mainImage5 from "./images/clothes_5.png";
+// import mainImage1 from "./images/clothes_1.png";
+// import mainImage2 from "./images/clothes_2.png";
+// import mainImage3 from "./images/clothes_3.png";
+// import mainImage4 from "./images/clothes_4.png";
+// import mainImage5 from "./images/clothes_5.png";
 import arrowLeft from "./images/arrow_left.png";
 import arrowRight from "./images/arrow_right.png";
 
@@ -10,34 +10,41 @@ import { useState, useEffect, useRef } from "react";
 import VideoSlide from "./VideoSlide";
 import clothesVideo from "../../assets/products/clothes_video.mp4";
 
-const sliderDataArray = [
-  {
-    type: "video",
-    source: clothesVideo,
-  },
-  {
-    type: "image",
-    source: mainImage1,
-  },
-  {
-    type: "image",
-    source: mainImage2,
-  },
-  {
-    type: "image",
-    source: mainImage3,
-  },
-  {
-    type: "image",
-    source: mainImage4,
-  },
-  {
-    type: "image",
-    source: mainImage5,
-  },
-];
+// const sliderDataArray = [
+//   {
+//     type: "video",
+//     source: clothesVideo,
+//   },
+//   {
+//     type: "image",
+//     source: mainImage1,
+//   },
+//   {
+//     type: "image",
+//     source: mainImage2,
+//   },
+//   {
+//     type: "image",
+//     source: mainImage3,
+//   },
+//   {
+//     type: "image",
+//     source: mainImage4,
+//   },
+//   {
+//     type: "image",
+//     source: mainImage5,
+//   },
+// ];
 
-const Slide = () => {
+const Slide = ({
+  sliderDataArray,
+}: {
+  sliderDataArray: {
+    type: string;
+    source: string;
+  }[];
+}) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const interval = useRef<ReturnType<typeof setInterval>>();
   const moveDot = (index: number) => {

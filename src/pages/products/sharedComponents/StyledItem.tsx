@@ -6,10 +6,18 @@ const StyledItem = ({
   imgSrc,
   badgeText,
   noBorderBottom,
+  brand,
+  name,
+  price,
+  discountPrice,
 }: {
   imgSrc: string;
   badgeText: string | null;
   noBorderBottom: boolean;
+  brand: string;
+  name: string;
+  price: number;
+  discountPrice: number;
 }) => {
   return (
     <div
@@ -22,13 +30,11 @@ const StyledItem = ({
         {badgeText && <Badge text={badgeText} />}
       </div>
       <div className="w-[190px]">
-        <h5 className="text-[#999999]">niko and ...</h5>
-        <h4 className="mb-4 text-[14px]">
-          LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色
-        </h4>
-        <small className="text-[#999999] line-through">NT$5</small>
+        <h5 className="text-[#999999]">{brand}</h5>
+        <h4 className="mb-4 text-[14px]">{name}</h4>
+        <small className="text-[#999999] line-through">{`NT$${price}`}</small>
         <div className="flex justify-between">
-          <h4 className="text-primary">NT$200</h4>
+          <h4 className="text-primary">{`NT$${discountPrice}`}</h4>
           <div className="flex items-center">
             <img
               src={likeIcon}
