@@ -40,7 +40,7 @@ const VideoSlide = ({ src }: { src: string }) => {
           max="100"
           value={playerState.progress}
           onChange={(e) => handleVideoProgress(e)}
-          className="mr-2"
+          className="mr-2 self-center video-progress-controller"
         />
         <button onClick={toggleMuted}>
           {playerState.isMuted ? (

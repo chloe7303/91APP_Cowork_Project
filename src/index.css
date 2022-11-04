@@ -9,3 +9,20 @@
     position: relative;
   }
 }
+
+.video-progress-controller {
+  -webkit-appearance: none !important;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  height: 8px;
+  width: 200px;
+}
+
+.video-progress-controller::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+}
