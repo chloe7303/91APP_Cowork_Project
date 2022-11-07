@@ -16,7 +16,12 @@ function Products() {
           <SideBar data={storeInfoData} />
         </div>
         <div className="mb-[260px] w-full mx-auto max-w-[1180px]">
-          <Main personData={data.styleHint} hintData={data.styleHint} />
+          <Main
+            personData={data.styleHint}
+            hintData={data.styleHint}
+            mainData={data.styledItems}
+            sliderData={data.slideSrc}
+          />
         </div>
       </div>
       <Footer />
