@@ -8,34 +8,6 @@ import arrowRight from "./images/arrow_right.png";
 
 import { useState, useEffect, useRef } from "react";
 import VideoSlide from "./VideoSlide";
-import clothesVideo from "../../assets/products/clothes_video.mp4";
-
-// const sliderDataArray = [
-//   {
-//     type: "video",
-//     source: clothesVideo,
-//   },
-//   {
-//     type: "image",
-//     source: mainImage1,
-//   },
-//   {
-//     type: "image",
-//     source: mainImage2,
-//   },
-//   {
-//     type: "image",
-//     source: mainImage3,
-//   },
-//   {
-//     type: "image",
-//     source: mainImage4,
-//   },
-//   {
-//     type: "image",
-//     source: mainImage5,
-//   },
-// ];
 
 const Slide = ({
   sliderDataArray,

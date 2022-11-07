@@ -1,41 +1,6 @@
 import StyledItem from "./sharedComponents/StyledItem";
 import Slide from "./Slide";
 
-// const styledItemList = [
-//   {
-//     imgSrc: styleItem1,
-//     badgeText: "即將開賣",
-//     brand: "niko and ...",
-//     name: "LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色",
-//     price: 500,
-//     discountPrice: 200,
-//   },
-//   {
-//     imgSrc: styleItem2,
-//     badgeText: "已售完",
-//     brand: "niko and ...",
-//     name: "LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色",
-//     price: 500,
-//     discountPrice: 200,
-//   },
-//   {
-//     imgSrc: styleItem3,
-//     badgeText: null,
-//     brand: "niko and ...",
-//     name: "LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色",
-//     price: 500,
-//     discountPrice: 200,
-//   },
-//   {
-//     imgSrc: styleItem4,
-//     badgeText: null,
-//     brand: "niko and ...",
-//     name: "LOWRYS FARM素色飄逸垂墜感修身百褶長裙-三色",
-//     price: 500,
-//     discountPrice: 200,
-//   },
-// ];
-
 const MainProduct = ({
   styledItemList,
   sliderData,
