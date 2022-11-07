@@ -1,8 +1,3 @@
-// import mainImage1 from "./images/clothes_1.png";
-// import mainImage2 from "./images/clothes_2.png";
-// import mainImage3 from "./images/clothes_3.png";
-// import mainImage4 from "./images/clothes_4.png";
-// import mainImage5 from "./images/clothes_5.png";
 import arrowLeft from "./images/arrow_left.png";
 import arrowRight from "./images/arrow_right.png";
 
