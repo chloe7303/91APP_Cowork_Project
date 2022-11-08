@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import formatNumberWithCommas from "../utils/formatNumberWithCommas";
 
 const SuccessVerifiedPage = () => {
   const navigate = useNavigate();
@@ -41,14 +42,14 @@ const SuccessVerifiedPage = () => {
         </div>
       </div>
       <div className="max-w-[1080px] mx-auto pt-[30px] px-[15px] md:w-[850px] md:h-[713px]">
-        <h2 className="font-bold text-[14px] md:text-[24px] font-medium pb-4 border-b border-solid border-[#D8D8D8] mb-7">
+        <h2 className="text-[14px] md:text-[24px] font-medium pb-4 border-b border-solid border-[#D8D8D8] mb-7">
           登記資訊如下：
         </h2>
         <h2 className="text-[14px] md:text-[24px] font-medium mb-[10px] md:mb-[30px] flex justify-between ">
           <p className="font-bold">登記狀態</p>
           <p className="font-bold">驗證通過</p>
         </h2>
-        <h2 className="font-bold text-[14px] md:text-[24px] font-medium flex justify-between mb-[10px] md:mb-[25px]">
+        <h2 className="text-[14px] md:text-[24px] font-medium flex justify-between mb-[10px] md:mb-[25px]">
           商品資訊
         </h2>
         <div className="mb-[34px] md:mb-[82px] ml-[12px] md:ml-[22px]">
@@ -66,10 +67,12 @@ const SuccessVerifiedPage = () => {
           </div>
           <div className="flex justify-between text-[14px] md:text-[24px] mt-2 md:mt-4">
             <p>單價</p>
-            <p className="text-[#FF5353]">{`NT$${info.phoneInfo.price}`}</p>
+            <p className="text-[#FF5353]">
+              {formatNumberWithCommas(info.phoneInfo.price)}
+            </p>
           </div>
         </div>
-        <h2 className="font-bold text-[14px] md:text-[24px] font-medium mb-[10px] md:mb-[25px] flex justify-between">
+        <h2 className="text-[14px] md:text-[24px] font-medium mb-[10px] md:mb-[25px] flex justify-between">
           個人資訊
         </h2>
         <div className="mb-[34px] md:mb-[82px] ml-[12px] md:ml-[22px]">
