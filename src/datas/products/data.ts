@@ -14,6 +14,7 @@ import mainImage3 from "../../assets/products/clothes3.png";
 import mainImage4 from "../../assets/products/clothes4.png";
 import mainImage5 from "../../assets/products/clothes5.png";
 import clothesVideo from "../../assets/products/staff.mov";
+import clothesVideo2 from "../../assets/products/clothes.mp4";
 
 export const data = {
   id: "",
@@ -33,6 +34,10 @@ export const data = {
     {
       type: "image",
       source: mainImage3,
+    },
+    {
+      type: "video",
+      source: clothesVideo2,
     },
     {
       type: "image",
