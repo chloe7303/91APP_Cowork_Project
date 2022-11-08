@@ -8,6 +8,7 @@ import Selector from "./Selector";
 import { productsData } from "../../../datas/activity/data";
 import ImageDisplay from "./ImageDisplay";
 import Popup from "../sharedComponents/Popup";
+import formatNumberWithCommas from "../utils/formatNumberWithCommas";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -25,11 +26,6 @@ const ProductPage = () => {
     price: 0,
   });
   const [showPopup, setShowPopup] = useState(false);
-
-  const formatNumberWithCommas = (price: number) => {
-    let updatedPrice = price.toLocaleString("en-US");
-    return `NT$${updatedPrice}`;
-  };
 
   useEffect(() => {
     if (!userInfo?.accepted) navigate("/activity/submit");
