@@ -7,6 +7,7 @@ import Button from "../sharedComponents/Button";
 import Selector from "./Selector";
 import { productsData } from "../../../datas/activity/data";
 import ImageDisplay from "./ImageDisplay";
+import Popup from "../sharedComponents/Popup";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -175,27 +176,14 @@ const ProductPage = () => {
           param={{}}
         />
       </div>
-      {/* popup */}
-      <div
-        className={`${
-          !showPopup && "hidden"
-        } fixed bg-black w-full top-0 bottom-0 opacity-50`}
-      ></div>
-      <div
-        className={`${
-          !showPopup && "hidden"
-        } absolute p-4 rounded-md bg-light top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%] opacity-100 text-center`}
-      >
-        <h3 className="md:text-[20px] font-medium mb-5">請選擇商品選項</h3>
-        <h4 className="mb-4 whitespace-nowrap">
-          送出資料錯誤，未選擇商品款式規格
-        </h4>
-        <Button
-          text="確認"
-          handleClick={() => setShowPopup(false)}
-          param={{}}
+      {showPopup && (
+        <Popup
+          title={"請選擇商品選項"}
+          content={"送出資料錯誤，未選擇商品款式規格"}
+          buttonText={"確認"}
+          buttonAction={() => setShowPopup(false)}
         />
-      </div>
+      )}
     </main>
   ) : (
     <></>
