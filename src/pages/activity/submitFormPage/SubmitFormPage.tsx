@@ -13,7 +13,7 @@ const SubmitFormPage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmitForm = (values: userInfoType) => {
-    fetch("http://localhost:3001/submit", {
+    fetch("https://next-practice-delta-five.vercel.app/submit", {
       body: JSON.stringify(values),
       method: "POST",
     })
