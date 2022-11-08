@@ -1,16 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Button from "../sharedComponents/Button";
 import SubmitForm from "./SubmitForm";
 import { useDispatch } from "react-redux";
 import { activityInfoActions } from "../../../redux/reducers/activityInfoReducer";
 import { userInfoType } from "../../../redux/reducers/activityInfoReducer";
+import Popup from "../sharedComponents/Popup";
 
 const SubmitFormPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSubmitForm = (values: userInfoType) => {
-    fetch("http://localhost:3001/submit", {
+    fetch("https://next-practice-delta-five.vercel.app/submit", {
       body: JSON.stringify(values),
       method: "POST",
     })
@@ -27,7 +30,7 @@ const SubmitFormPage = () => {
           );
           navigate("/activity/product");
         } else {
-          //pop-up
+          setShowPopup(true);
         }
         return res;
       })
@@ -70,6 +73,14 @@ const SubmitFormPage = () => {
           param={{ formName: "userInfoForm" }}
         />
       </div>
+      {showPopup && (
+        <Popup
+          title="重複登記"
+          content="該手機號碼已登記過"
+          buttonText="確認"
+          buttonAction={() => setShowPopup(false)}
+        />
+      )}
     </main>
   );
 };
