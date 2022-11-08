@@ -12,6 +12,7 @@ import SubmitFormPage from "./pages/activity/submitFormPage/SubmitFormPage";
 import SuccessVerifiedPage from "./pages/activity/successVerifiedPage/SuccessVerifiedPage";
 import store from "./redux/store";
 import { Provider } from "react-redux";
+import HomePage from "./HomePage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,23 +21,22 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route
-            path="activity"
-            element={
-              <Provider store={store}>
-                <Activity />
-              </Provider>
-            }
-          >
-            <Route index element={<LandingPage />}></Route>
-            <Route path="product" element={<ProductPage />}></Route>
-            <Route path="submit" element={<SubmitFormPage />}></Route>
-            <Route path="success" element={<SuccessVerifiedPage />}></Route>
-          </Route>
-          <Route path="/products" element={<Products />}></Route>
-          <Route path="*" element={<Error />} />
+        <Route path="/" element={<HomePage />}></Route>
+        <Route
+          path="/activity"
+          element={
+            <Provider store={store}>
+              <Activity />
+            </Provider>
+          }
+        >
+          <Route index element={<LandingPage />}></Route>
+          <Route path="product" element={<ProductPage />}></Route>
+          <Route path="submit" element={<SubmitFormPage />}></Route>
+          <Route path="success" element={<SuccessVerifiedPage />}></Route>
         </Route>
+        <Route path="/products" element={<Products />}></Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
