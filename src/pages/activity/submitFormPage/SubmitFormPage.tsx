@@ -10,14 +10,31 @@ const SubmitFormPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmitForm = (values: userInfoType) => {
-    dispatch(
-      activityInfoActions.setUser({ userInfo: { ...values, accepted: true } })
-    );
-    sessionStorage.setItem(
-      "userInfo",
-      JSON.stringify({ ...values, accepted: true })
-    );
-    navigate("/activity/product");
+    fetch("http://localhost:3001/submit", {
+      body: JSON.stringify(values),
+      method: "POST",
+    })
+      .then((res) => {
+        if (res.ok) {
+          dispatch(
+            activityInfoActions.setUser({
+              userInfo: { ...values, accepted: true },
+            })
+          );
+          sessionStorage.setItem(
+            "userInfo",
+            JSON.stringify({ ...values, accepted: true })
+          );
+          navigate("/activity/product");
+        } else {
+          //pop-up
+        }
+        return res;
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("submit failed. Error occurred.");
+      });
   };
 
   return (
