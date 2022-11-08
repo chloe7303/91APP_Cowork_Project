@@ -13,7 +13,7 @@ import mainImage2 from "../../assets/products/clothes2.png";
 import mainImage3 from "../../assets/products/clothes3.png";
 import mainImage4 from "../../assets/products/clothes4.png";
 import mainImage5 from "../../assets/products/clothes5.png";
-import clothesVideo from "../../assets/products/clothes_video.mp4";
+import clothesVideo from "../../assets/products/staff.mov";
 
 export const data = {
   id: "",
