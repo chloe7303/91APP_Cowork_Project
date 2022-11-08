@@ -38,7 +38,7 @@ export default function Slide({
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
     if (isLeftSwipe) {
-      if (currentIndex === slideData.length) {
+      if (currentIndex === slideData.length - 1) {
         return;
       } else {
         setCurrentIndex((prev) => prev + 1);
