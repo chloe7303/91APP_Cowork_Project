@@ -17,8 +17,9 @@ const Selector = ({
         colorCode ? "px-3" : "px-4"
       } text-[14px] mr-[10px] mb-[10px] ${
         isActive && "bg-primary text-light"
-      } ${isDisabled && "bg-[#f6f6f6] text-[#999999]"}`}
+      } ${isDisabled && "bg-[#f6f6f6] text-[#999999]"} cursor-not-allowed`}
       onClick={() => handleClick()}
+      disabled={isDisabled}
     >
       <span>{text}</span>
       {colorCode && (

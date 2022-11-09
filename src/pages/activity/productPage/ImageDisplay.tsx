@@ -75,7 +75,7 @@ export default function ImageDisplay({
             ? param?.backgroundColor
             : "transparent",
         }}
-        className="flex items-center justify-center !w-full !h-auto"
+        className="flex items-center justify-center"
       >
         {data
           ?.filter((element) => element.hexCode === currentColor)
@@ -107,7 +107,7 @@ export default function ImageDisplay({
             setShowArrayIndex((prev) => prev - 1);
           }}
         >
-          <img className="" src={vectorLeft} />
+          <img src={vectorLeft} alt="vectorLeft" />
         </button>
         <div
           className="flex"
@@ -157,7 +157,7 @@ export default function ImageDisplay({
             setShowArrayIndex((prev) => prev + 1);
           }}
         >
-          <img className="" src={vectorRight} />
+          <img src={vectorRight} alt="vectorRight" />
         </button>
       </div>
     </div>
