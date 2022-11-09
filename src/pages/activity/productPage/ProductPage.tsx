@@ -164,7 +164,7 @@ const ProductPage = () => {
                 })
               );
               sessionStorage.removeItem("userInfo");
-              navigate("/activity/success");
+              navigate("/activity/success", { replace: true });
             } else {
               setShowPopup(true);
             }
