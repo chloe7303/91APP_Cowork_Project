@@ -26,6 +26,7 @@ const ProductPage = () => {
     price: 0,
   });
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!userInfo?.accepted) navigate("/activity/submit");
@@ -169,32 +170,58 @@ const ProductPage = () => {
           <p>{formatNumberWithCommas(selectedProduct.price)}</p>
         </div>
         <Button
-          text={"送出"}
+          text={isLoading ? "送出中..." : "送出"}
+          param={{ isDisabled: isLoading }}
           handleClick={() => {
-            if (
-              selectedProduct.model &&
-              selectedProduct.memory &&
-              selectedProduct.color
-            ) {
-              dispatch(
-                activityInfoActions.setPhoneInfo({
-                  phoneInfo: {
-                    model: selectedProduct.model,
-                    type: selectedProduct.type,
-                    memory: selectedProduct.memory,
-                    quantity: 1,
-                    color: selectedProduct.colorName,
-                    price: selectedProduct.price,
-                  },
-                })
-              );
-              sessionStorage.removeItem("userInfo");
-              navigate("/activity/success", { replace: true });
-            } else {
-              setShowPopup(true);
+            try {
+              if (
+                selectedProduct.model &&
+                selectedProduct.memory &&
+                selectedProduct.color
+              ) {
+                setIsLoading(true);
+                fetch("https://next-practice-delta-five.vercel.app/reserved", {
+                  body: JSON.stringify({
+                    phoneNumber: userInfo.phoneNumber,
+                    reservedInfo: {
+                      model: selectedProduct.model,
+                      type: selectedProduct.type,
+                      memory: selectedProduct.memory,
+                      quantity: 1,
+                      color: selectedProduct.colorName,
+                      price: selectedProduct.price,
+                    },
+                  }),
+                  method: "POST",
+                }).then((res) => {
+                  if (res.ok) {
+                    dispatch(
+                      activityInfoActions.setPhoneInfo({
+                        phoneInfo: {
+                          model: selectedProduct.model,
+                          type: selectedProduct.type,
+                          memory: selectedProduct.memory,
+                          quantity: 1,
+                          color: selectedProduct.colorName,
+                          price: selectedProduct.price,
+                        },
+                      })
+                    );
+
+                    sessionStorage.removeItem("userInfo");
+                    navigate("/activity/success", { replace: true });
+                  }
+                  setIsLoading(false);
+                  return res;
+                });
+              } else {
+                setShowPopup(true);
+              }
+            } catch (e) {
+              setIsLoading(false);
+              alert("an error occurred");
             }
           }}
-          param={{}}
         />
       </div>
       {showPopup && (
