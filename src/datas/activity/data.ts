@@ -56,7 +56,7 @@ export const productsData = {
         { id: "447792_256", hexCode: "447792", size: "256GB", stock: 5 },
         { id: "447792_512", hexCode: "447792", size: "512GB", stock: 2 },
         { id: "43484E_128", hexCode: "43484E", size: "128GB", stock: 1 },
-        { id: "43484E_256", hexCode: "43484E", size: "256GB", stock: 2 },
+        { id: "43484E_256", hexCode: "43484E", size: "256GB", stock: 0 },
         { id: "43484E_512", hexCode: "43484E", size: "512GB", stock: 2 },
         { id: "FBF7F4_128", hexCode: "FBF7F4", size: "128GB", stock: 3 },
         { id: "FBF7F4_256", hexCode: "FBF7F4", size: "256GB", stock: 2 },

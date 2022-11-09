@@ -93,11 +93,25 @@ const ProductPage = () => {
                   text={color.name}
                   colorCode={color.hexCode}
                   isActive={selectedProduct.color === color.hexCode}
-                  isDisabled={productsData?.products[
-                    selectedProduct.model as keyof typeof productsData.products
-                  ].variants
-                    .filter((variant) => color.hexCode === variant.hexCode)
-                    .every((variant) => variant.stock === 0)}
+                  isDisabled={
+                    selectedProduct.memory
+                      ? productsData?.products[
+                          selectedProduct.model as keyof typeof productsData.products
+                        ].variants
+                          .filter(
+                            (variant) => color.hexCode === variant.hexCode
+                          )
+                          .find(
+                            (variant) => selectedProduct.memory === variant.size
+                          )?.stock === 0
+                      : productsData?.products[
+                          selectedProduct.model as keyof typeof productsData.products
+                        ].variants
+                          .filter(
+                            (variant) => color.hexCode === variant.hexCode
+                          )
+                          .every((variant) => variant.stock === 0)
+                  }
                   handleClick={() =>
                     setSelectedProduct((prevValue) => ({
                       ...prevValue,
@@ -120,11 +134,22 @@ const ProductPage = () => {
                   text={`${memory.size}`}
                   colorCode={""}
                   isActive={selectedProduct.memory === memory.size}
-                  isDisabled={productsData?.products[
-                    selectedProduct.model as keyof typeof productsData.products
-                  ].variants
-                    .filter((variant) => memory.size === variant.size)
-                    .every((variant) => variant.stock === 0)}
+                  isDisabled={
+                    selectedProduct.color
+                      ? productsData?.products[
+                          selectedProduct.model as keyof typeof productsData.products
+                        ].variants
+                          .filter((variant) => memory.size === variant.size)
+                          .find(
+                            (variant) =>
+                              selectedProduct.color === variant.hexCode
+                          )?.stock === 0
+                      : productsData?.products[
+                          selectedProduct.model as keyof typeof productsData.products
+                        ].variants
+                          .filter((variant) => memory.size === variant.size)
+                          .every((variant) => variant.stock === 0)
+                  }
                   handleClick={() =>
                     setSelectedProduct((prevValue) => ({
                       ...prevValue,
