@@ -11,8 +11,10 @@ const SubmitFormPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitForm = (values: userInfoType) => {
+    setIsLoading(true);
     fetch("https://next-practice-delta-five.vercel.app/submit", {
       body: JSON.stringify(values),
       method: "POST",
@@ -32,9 +34,11 @@ const SubmitFormPage = () => {
         } else {
           setShowPopup(true);
         }
+        setIsLoading(false);
         return res;
       })
       .catch((e) => {
+        setIsLoading(false);
         console.log(e);
         alert("submit failed. Error occurred.");
       });
@@ -68,9 +72,9 @@ const SubmitFormPage = () => {
       </div>
       <div className="p-4 fixed bottom-0 bg-light w-full drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
         <Button
-          text={"選擇商品"}
+          text={isLoading ? "送出中..." : "選擇商品"}
           handleClick={() => {}}
-          param={{ formName: "userInfoForm" }}
+          param={{ formName: "userInfoForm", isDisabled: isLoading }}
         />
       </div>
       {showPopup && (
