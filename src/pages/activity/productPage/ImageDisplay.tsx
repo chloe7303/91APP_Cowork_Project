@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import vectorRight from "../../../assets/activity/vectorRight.png";
 import vectorLeft from "../../../assets/activity/vectorLeft.png";
 
@@ -18,23 +18,24 @@ export default function ImageDisplay({
     data?.[0].hexCode || ""
   );
   const [showArrayIndex, setShowArrayIndex] = useState<number>(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const touchStart = useRef(0);
+  const touchEnd = useRef(0);
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(0); // otherwise the swipe is fired even with usual touch events
-    setTouchStart(e.targetTouches[0].clientX);
+    touchEnd.current = 0;
+    touchStart.current = e.targetTouches[0].clientX;
   };
 
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
-    setTouchEnd(e.targetTouches[0].clientX);
+    (touchEnd.current = e.targetTouches[0].clientX);
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
+    const distance = touchStart.current - touchEnd.current;
+
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
     if (isLeftSwipe) {
