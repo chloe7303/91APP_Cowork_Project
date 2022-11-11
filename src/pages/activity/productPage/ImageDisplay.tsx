@@ -39,7 +39,7 @@ export default function ImageDisplay({
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
     if (isLeftSwipe) {
-      if (showArrayIndex === data.length / 5) {
+      if (showArrayIndex === Math.ceil(data.length / 5) - 1) {
         return;
       } else {
         setShowArrayIndex((prev) => prev + 1);
