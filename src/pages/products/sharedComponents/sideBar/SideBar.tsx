@@ -15,14 +15,10 @@ export default function SideBar({
             key={`${element.data}_${element.name}`}
             className="text-[14px] text-[#999999] mb-3 "
           >
-            <summary className="flex w-[196px] justify-between">
-              <span className="cursor-pointer">{element.name}</span>
+            <summary className="flex w-[196px] justify-between cursor-pointer">
+              <span>{element.name}</span>
               {element.data.length !== 0 ? (
-                <img
-                  alt="drop arrow"
-                  src={arrowDrop}
-                  className="cursor-pointer"
-                />
+                <img alt="drop arrow" src={arrowDrop} />
               ) : (
                 <></>
               )}
