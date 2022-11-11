@@ -34,7 +34,7 @@ export default function Slide({
     (touchEnd.current = e.targetTouches[0].clientX);
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart.current || !touchEnd.current) return;
     const distance = touchStart.current - touchEnd.current;
 
     const isLeftSwipe = distance > minSwipeDistance;

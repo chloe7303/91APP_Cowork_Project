@@ -33,7 +33,7 @@ export default function ImageDisplay({
     (touchEnd.current = e.targetTouches[0].clientX);
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart.current || !touchEnd.current) return;
     const distance = touchStart.current - touchEnd.current;
 
     const isLeftSwipe = distance > minSwipeDistance;
@@ -70,7 +70,7 @@ export default function ImageDisplay({
             ? param?.backgroundColor
             : "transparent",
         }}
-        className="flex items-center justify-center"
+        className="flex items-center justify-center !w-full"
       >
         {data
           ?.filter((element) => element.hexCode === currentColor)
