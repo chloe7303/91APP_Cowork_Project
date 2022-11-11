@@ -12,6 +12,7 @@ const Header = () => {
           onClick={() => {
             navigate("/");
           }}
+          className="cursor-pointer"
         />
       </div>
     </header>

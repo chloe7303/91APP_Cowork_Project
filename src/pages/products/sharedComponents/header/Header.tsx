@@ -27,7 +27,7 @@ export default function Header() {
         <img
           alt="logo"
           src={logo}
-          className="mr-[27px] h-[65px] mt-5 mb-[15px]"
+          className="mr-[27px] h-[65px] mt-5 mb-[15px] cursor-pointer"
           onClick={() => {
             navigate("/");
           }}
