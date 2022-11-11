@@ -66,6 +66,12 @@ export default function ImageDisplay({
     <div>
       <div
         style={{
+          width: param?.backgroundWidth
+            ? `${param?.backgroundWidth}px`
+            : "500px",
+          height: param?.backgroundHeight
+            ? `${param?.backgroundHeight}px`
+            : "500px",
           backgroundColor: param?.backgroundColor
             ? param?.backgroundColor
             : "transparent",
