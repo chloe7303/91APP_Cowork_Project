@@ -6,6 +6,7 @@ import earthIcon from "./earthIcon.png";
 import coinIcon from "./coinIcon.png";
 import dropArrow from "./dropArrow.png";
 import searchIcon from "./searchIcon.png";
+import { useNavigate } from "react-router-dom";
 
 const categoryList = [
   { name: "Category", arrow: true },
@@ -19,6 +20,7 @@ const categoryList = [
 ];
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <div className="bg-[#C89185]">
       <div className="max-w-[1180px] mx-auto flex">
@@ -26,6 +28,9 @@ export default function Header() {
           alt="logo"
           src={logo}
           className="mr-[27px] h-[65px] mt-5 mb-[15px]"
+          onClick={() => {
+            navigate("/");
+          }}
         />
 
         <div className="flex flex-col">
