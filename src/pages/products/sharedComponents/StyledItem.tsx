@@ -31,7 +31,7 @@ const StyledItem = ({
       </div>
       <div className="w-[190px]">
         <h5 className="text-[#999999]">{brand}</h5>
-        <h4 className="mb-4 text-[14px] cursor-pointer">{name}</h4>
+        <h4 className="mb-4 text-[14px] cursor-pointer line-clamp-2">{name}</h4>
         <small className="text-[#999999] line-through">{`NT$${price}`}</small>
         <div className="flex justify-between">
           <h4 className="text-primary">{`NT$${discountPrice}`}</h4>
