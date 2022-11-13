@@ -24,7 +24,7 @@ const useVideoPlayer = (
     });
   };
 
-  const handleOnTimeUpdate = () => {
+  const updateVideoProgress = () => {
     if (!videoElement.current) return;
     const progress =
       (videoElement.current.currentTime / videoElement.current.duration) * 100;
@@ -38,7 +38,9 @@ const useVideoPlayer = (
     }
   };
 
-  const handleVideoProgress = (event: { target: { value: unknown } }) => {
+  const handleUserChangeVideoProgress = (event: {
+    target: { value: unknown };
+  }) => {
     if (!videoElement.current) return;
     const manualChange = Number(event.target.value);
     videoElement.current.currentTime =
@@ -60,9 +62,8 @@ const useVideoPlayer = (
     playerState,
     togglePlay,
     toggleMuted,
-    handleOnTimeUpdate,
-    handleVideoProgress,
-    handleVideoFinished,
+    updateVideoProgress,
+    handleUserChangeVideoProgress,
   };
 };
 
