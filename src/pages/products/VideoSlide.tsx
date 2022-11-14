@@ -20,8 +20,8 @@ const VideoSlide = ({
     playerState,
     toggleMuted,
     togglePlay,
-    handleOnTimeUpdate,
-    handleVideoProgress,
+    updateVideoProgress,
+    handleUserChangeVideoProgress,
   } = useVideoPlayer(videoElement, handleVideoFinished);
 
   return (
@@ -33,7 +33,7 @@ const VideoSlide = ({
         height={"703px"}
         src={src}
         ref={videoElement}
-        onTimeUpdate={handleOnTimeUpdate}
+        onTimeUpdate={updateVideoProgress}
       ></video>
       <div className="absolute bottom-[15px] py-2 px-4 rounded-md bg-white/25 z-10 flex left-[50%] -translate-x-[50%]">
         <button className="mr-2" onClick={togglePlay}>
@@ -48,7 +48,7 @@ const VideoSlide = ({
           min="0"
           max="100"
           value={playerState.progress}
-          onChange={(e) => handleVideoProgress(e)}
+          onChange={(e) => handleUserChangeVideoProgress(e)}
           className="mr-2 self-center video-progress-controller"
         />
         <button onClick={toggleMuted}>
